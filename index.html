@@ -1,30 +1,453 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tri-Sphere Training</title>
-  <link rel="stylesheet" href="static/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tri-Sphere Training | Basketball Coaching</title>
+  <link rel="stylesheet" href="static/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Tri-Sphere Training</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="register.html">Register</a>
-      <a href="contact.html">Contact</a>
-      <a href="gallery.html">Gallery</a>
+  <div class="preloader">
+    <div class="basketball">
+      <div class="lines"></div>
+    </div>
+  </div>
+  
+  <header id="header">
+    <nav class="navbar">
+      <div class="logo">
+        <span>TRI-SPHERE</span>
+        <span class="highlight">TRAINING</span>
+      </div>
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#register" class="nav-link cta-small">Register</a></li>
+      </ul>
     </nav>
   </header>
+
   <main>
-    <h2>Training Built for the Whole Athlete</h2>
-    <p>At Tri-Sphere Training, we develop the complete athlete — mentally, physically, and emotionally. Our programs are built to help you grow in all areas of the game and life. Join us today.</p>
-    <a class="cta-button" href="register.html">Register Now</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1 class="reveal-text">Training Built for the<br><span class="highlight">Whole Athlete</span></h1>
+        <p class="reveal-text delay-1">At Tri-Sphere Training, we develop the complete athlete — mentally, physically, and emotionally. Our programs are built to help you grow in all areas of the game and life.</p>
+        <a href="#register" class="cta-button reveal-text delay-2">Register Now</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="Basketball Training">
+        <div class="hero-shape"></div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="philosophy">
+      <div class="container">
+        <h2 class="section-title reveal-text">Our <span class="highlight">Philosophy</span></h2>
+        <div class="spheres">
+          <div class="sphere-card reveal-item">
+            <div class="sphere-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Mental</h3>
+            <p>Building basketball IQ, focus, resilience, and strategic thinking on and off the court.</p>
+          </div>
+          <div class="sphere-card reveal-item delay-1">
+            <div class="sphere-icon">
+              <i class="fas fa-dumbbell"></i>
+            </div>
+            <h3>Physical</h3>
+            <p>Developing skills, strength, agility, and the technical foundation needed to excel.</p>
+          </div>
+          <div class="sphere-card reveal-item delay-2">
+            <div class="sphere-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3>Emotional</h3>
+            <p>Cultivating passion, teamwork, leadership, and character for lasting success.</p>
+          </div>
+        </div>
+        <div class="philosophy-text reveal-text delay-3">
+          <p>Tri-Sphere Training is based on the belief that complete athletes are developed through the integration of three key spheres: mental, physical, and emotional. These overlapping areas represent our commitment to fostering balance and strength across every aspect of the game.</p>
+          <p>We teach athletes to push their limits physically, build mental resilience, and stay emotionally grounded — forming a well-rounded, confident player ready for any challenge.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image reveal-item">
+            <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Ethan Boag">
+            <div class="about-shape"></div>
+          </div>
+          <div class="about-content">
+            <h2 class="section-title reveal-text">About <span class="highlight">Ethan Boag</span></h2>
+            <div class="about-text reveal-text delay-1">
+              <p>I'm Ethan Boag, a fourth-year student-athlete at the University of Victoria. I'm passionate about basketball and giving back to the game and my community.</p>
+              
+              <div class="achievements-tabs">
+                <div class="tab-buttons">
+                  <button class="tab-btn active" data-tab="university">University</button>
+                  <button class="tab-btn" data-tab="pre-university">Pre-University</button>
+                  <button class="tab-btn" data-tab="coaching">Coaching</button>
+                </div>
+                
+                <div class="tab-content active" id="university">
+                  <h3>University Highlights</h3>
+                  <ul>
+                    <li>National Champion</li>
+                    <li>Canada West All-Star</li>
+                    <li>3-Time Canada West Champion</li>
+                    <li>Captain of the Vikes Men's Basketball program</li>
+                    <li>Academic All-Canadian for excellence in both studies and sports</li>
+                    <li>3-Time Academic All-Canadian and Honor Roll recipient</li>
+                  </ul>
+                </div>
+                
+                <div class="tab-content" id="pre-university">
+                  <h3>Pre-University Experience</h3>
+                  <ul>
+                    <li>Provincial first-team all-star in high school volleyball and basketball</li>
+                    <li>Team BC & U19 National Team member</li>
+                    <li>Multi-sport athlete: volleyball, soccer, basketball, baseball</li>
+                  </ul>
+                </div>
+                
+                <div class="tab-content" id="coaching">
+                  <h3>Coaching Experience</h3>
+                  <ul>
+                    <li>Leading Vikes basketball camps</li>
+                    <li>Personal training</li>
+                    <li>Working with youth in the local community</li>
+                  </ul>
+                  <p>I aim to help young athletes reach their potential both on and off the court.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title reveal-text">Our <span class="highlight">Services</span></h2>
+        <div class="services-grid">
+          <div class="service-card reveal-item">
+            <div class="service-icon">
+              <i class="fas fa-user-friends"></i>
+            </div>
+            <h3>1-on-1 Training</h3>
+            <p>Personalized coaching to focus on individual skills, techniques, and player development.</p>
+          </div>
+          
+          <div class="service-card reveal-item delay-1">
+            <div class="service-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Group Sessions</h3>
+            <p>Small group training for skill development with competitive elements and team dynamics.</p>
+          </div>
+          
+          <div class="service-card reveal-item delay-2">
+            <div class="service-icon">
+              <i class="fas fa-clipboard"></i>
+            </div>
+            <h3>Team Consulting</h3>
+            <p>Strategic advice and training plans for entire teams looking to improve their performance.</p>
+          </div>
+          
+          <div class="service-card reveal-item">
+            <div class="service-icon">
+              <i class="fas fa-basketball-ball"></i>
+            </div>
+            <h3>Camps & Clinics</h3>
+            <p>Intensive training events focused on developing specific skills and basketball fundamentals.</p>
+          </div>
+          
+          <div class="service-card reveal-item delay-1">
+            <div class="service-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Mental Performance</h3>
+            <p>Training to improve focus, confidence, and mental resilience during competition.</p>
+          </div>
+          
+          <div class="service-card reveal-item delay-2">
+            <div class="service-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3>Athletic Counselling</h3>
+            <p>Guidance for athletes navigating challenges both on the court and in their personal lives.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <h2 class="section-title reveal-text">What Our <span class="highlight">Athletes Say</span></h2>
+        <div class="testimonial-slider">
+          <div class="testimonial-track">
+            <div class="testimonial-slide">
+              <div class="testimonial-content">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p>Tri-Sphere Training completely transformed my game. Coach Ethan's approach to mental preparation gave me confidence I never had before.</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1610918286272-c9a8593730b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="Testimonial Author">
+                  <div>
+                    <h4>Jason K.</h4>
+                    <p>High School Athlete</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-content">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p>The balanced approach between physical skills and mental game has helped me become a more complete player. I've never felt more prepared.</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Testimonial Author">
+                  <div>
+                    <h4>Michael T.</h4>
+                    <p>College Athlete</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-slide">
+              <div class="testimonial-content">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p>As a coach, I've seen remarkable improvement in my team since working with Tri-Sphere. Their philosophy creates not just better players, but better people.</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1141&q=80" alt="Testimonial Author">
+                  <div>
+                    <h4>Coach Sarah L.</h4>
+                    <p>High School Coach</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-controls">
+            <button class="control-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <div class="testimonial-indicators">
+              <span class="indicator active"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+            </div>
+            <button class="control-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+      <div class="container">
+        <h2 class="section-title reveal-text">Training <span class="highlight">Gallery</span></h2>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal-item">
+            <img src="https://images.unsplash.com/photo-1546519638-68e109acd27d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1190&q=80" alt="Basketball Training">
+          </div>
+          <div class="gallery-item reveal-item delay-1">
+            <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Basketball Training">
+          </div>
+          <div class="gallery-item reveal-item delay-2">
+            <img src="https://images.unsplash.com/photo-1627627256672-027a4613d028?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80" alt="Basketball Training">
+          </div>
+          <div class="gallery-item reveal-item">
+            <img src="https://images.unsplash.com/photo-1594623274890-6b15B0576cc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Basketball Training">
+          </div>
+          <div class="gallery-item reveal-item delay-1">
+            <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Basketball Training">
+          </div>
+          <div class="gallery-item reveal-item delay-2">
+            <img src="https://images.unsplash.com/photo-1589802829628-387f4e3ade69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Basketball Training">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register" class="register">
+      <div class="container">
+        <div class="register-content">
+          <h2 class="section-title reveal-text">Ready to <span class="highlight">Join Us?</span></h2>
+          <p class="reveal-text delay-1">Take the first step towards becoming a complete athlete. Register for our programs and start your journey to excellence.</p>
+          <form class="register-form reveal-item delay-2">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" id="age" name="age" placeholder="Athlete's Age" required>
+            </div>
+            <div class="form-group full-width">
+              <label for="program">Program Interest</label>
+              <select id="program" name="program" required>
+                <option value="" disabled selected>Select a program</option>
+                <option value="1on1">1-on-1 Training</option>
+                <option value="group">Group Sessions</option>
+                <option value="team">Team Consulting</option>
+                <option value="camps">Camps & Clinics</option>
+                <option value="mental">Mental Performance</option>
+                <option value="counselling">Athletic Counselling</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="message">Additional Information</label>
+              <textarea id="message" name="message" placeholder="Tell us about your goals or any questions you have"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Register Now</button>
+          </form>
+          <p class="contact-alt reveal-text delay-3">Prefer to reach out directly? Contact us at <strong>edboag@gmail.com</strong> or call <strong>250-896-4875</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title reveal-text">Get in <span class="highlight">Touch</span></h2>
+        <div class="contact-grid">
+          <div class="contact-info reveal-item">
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Email</h3>
+                <p><a href="mailto:edboag@gmail.com">edboag@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Phone</h3>
+                <p><a href="tel:2508964875">250-896-4875</a></p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Instagram</h3>
+                <p><a href="https://instagram.com/tri-spheretraining" target="_blank">@tri-spheretraining</a></p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fab fa-facebook"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Facebook</h3>
+                <p><a href="https://facebook.com/tri-spheretraining" target="_blank">@tri-spheretraining</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-message reveal-item delay-1">
+            <h3>Send Us a Message</h3>
+            <form class="contact-form">
+              <div class="form-group">
+                <label for="contact-name">Name</label>
+                <input type="text" id="contact-name" name="contact-name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="contact-email" placeholder="Your Email" required>
+              </div>
+              <div class="form-group full-width">
+                <label for="contact-subject">Subject</label>
+                <input type="text" id="contact-subject" name="contact-subject" placeholder="Your Subject" required>
+              </div>
+              <div class="form-group full-width">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="contact-message" placeholder="Your Message" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
   <footer>
-    <p>Follow us: @tri-spheretraining on Instagram & Facebook | Email: edboag@gmail.com | Phone: 250-896-4875</p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo">
+            <span>TRI-SPHERE</span>
+            <span class="highlight">TRAINING</span>
+          </div>
+          <p>Training Built for the Whole Athlete</p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#register">Register</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:edboag@gmail.com">edboag@gmail.com</a></p>
+          <p><i class="fas fa-phone"></i> <a href="tel:2508964875">250-896-4875</a></p>
+          <div class="social-links">
+            <a href="https://instagram.com/tri-spheretraining" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/tri-spheretraining" target="_blank"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Tri-Sphere Training. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="back-to-top">
+      <a href="#home"><i class="fas fa-arrow-up"></i></a>
+    </div>
   </footer>
+
+  <script src="static/js/script.js"></script>
 </body>
 </html>
