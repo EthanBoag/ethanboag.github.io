@@ -174,28 +174,43 @@
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
   }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--dark-gray);
+    line-height: 1;
+  }
+  
+  .logo-img {
+    height: 40px;
+    width: auto;
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  
+  .logo-text .highlight {
+    color: #f97316;
+  }
   
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     padding: 1rem 2rem;
     max-width: 1400px;
     margin: 0 auto;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: var(--dark-gray);
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-  }
-  
-  .logo span {
-    display: block;
   }
   
   .nav-links {
