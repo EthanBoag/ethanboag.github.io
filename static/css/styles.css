@@ -277,9 +277,9 @@
     min-height: 100vh;
     padding: 100px 0 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 45% 55%; /* Adjust column proportions to give more space to image */
     align-items: center;
-    background: linear-gradient(to right, var(--white) 60%, rgba(243, 111, 33, 0.05) 60%);
+    background: linear-gradient(to right, var(--white) 50%, rgba(243, 111, 33, 0.05) 50%);
     overflow: hidden;
     position: relative;
   }
@@ -331,12 +331,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 10%;
+    padding-right: 5%; /* Reduced padding to allow more space */
   }
   
   .hero-image img {
-    width: 90%;
-    max-width: 650px;
+    width: 95%; /* Increased from 90% */
+    max-width: 750px; /* Increased from 650px */
     border-radius: 20px;
     object-fit: cover;
     position: relative;
@@ -348,10 +348,10 @@
   .hero-accent {
     position: absolute;
     top: 50%;
-    right: 5%;
+    right: 1%; /* Moved closer to edge */
     transform: translateY(-50%);
-    width: 65%;
-    height: 75%;
+    width: 70%; /* Slightly larger background */
+    height: 80%; /* Slightly larger background */
     background-color: var(--primary);
     border-radius: 20px;
     z-index: 1;
@@ -1141,7 +1141,7 @@
         background: linear-gradient(to bottom, var(--white) 60%, rgba(243, 111, 33, 0.05) 60%);
         padding: 120px 20px 60px;
         text-align: center;
-      }
+      }    
       
       .hero-content {
         padding: 0 20px;
@@ -1160,15 +1160,21 @@
       .hero-image {
         padding: 0;
         margin: 0 auto;
-        max-width: 600px;
-        width: 90%;
+        max-width: 700px; /* Increased from 600px */
+        width: 100%;
+      }
+
+      .hero-image img {
+        width: 95%;
+        max-width: 700px; /* Larger on mobile too */
       }
       
       .hero-accent {
         right: auto;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 80%;
+        width: 90%;
+        height: 75%;
       }
     
     .sphere-card {
@@ -1282,7 +1288,7 @@
     }
   }
 
-/* Bouncing Basketball Animation - with progressively lower bounces */
+/* Bouncing Basketball Animation - with 6 progressively lower bounces */
 .basketball-emoji {
     position: fixed;
     font-size: 38px;
@@ -1325,75 +1331,55 @@
     100% { left: 110%; }
   }
   
-  /* Multiple bounces with progressively lower heights */
+  /* 6 bounces with progressively lower heights */
   @keyframes vertical-bounce {
     /* First bounce - highest */
     0% {
       transform: translateY(0);
       animation-timing-function: ease-out;
     }
-    5% {
+    7% {
       transform: translateY(-120px);
       animation-timing-function: ease-in;
     }
-    10% {
+    14% {
       transform: translateY(0);
       animation-timing-function: ease-out;
     }
     
-    /* Second bounce - slightly lower */
-    15% {
-      transform: translateY(-100px);
+    /* Second bounce */
+    21% {
+      transform: translateY(-90px);
       animation-timing-function: ease-in;
     }
-    20% {
+    28% {
       transform: translateY(0);
       animation-timing-function: ease-out;
     }
     
     /* Third bounce */
-    25% {
-      transform: translateY(-80px);
+    35% {
+      transform: translateY(-65px);
       animation-timing-function: ease-in;
     }
-    30% {
+    42% {
       transform: translateY(0);
       animation-timing-function: ease-out;
     }
     
     /* Fourth bounce */
-    35% {
-      transform: translateY(-65px);
+    49% {
+      transform: translateY(-40px);
       animation-timing-function: ease-in;
     }
-    40% {
+    56% {
       transform: translateY(0);
       animation-timing-function: ease-out;
     }
     
     /* Fifth bounce */
-    45% {
-      transform: translateY(-50px);
-      animation-timing-function: ease-in;
-    }
-    50% {
-      transform: translateY(0);
-      animation-timing-function: ease-out;
-    }
-    
-    /* Sixth bounce */
-    55% {
-      transform: translateY(-35px);
-      animation-timing-function: ease-in;
-    }
-    60% {
-      transform: translateY(0);
-      animation-timing-function: ease-out;
-    }
-    
-    /* Seventh bounce */
-    65% {
-      transform: translateY(-25px);
+    63% {
+      transform: translateY(-20px);
       animation-timing-function: ease-in;
     }
     70% {
@@ -1401,22 +1387,12 @@
       animation-timing-function: ease-out;
     }
     
-    /* Eighth bounce */
-    75% {
-      transform: translateY(-15px);
+    /* Sixth bounce - smallest */
+    77% {
+      transform: translateY(-10px);
       animation-timing-function: ease-in;
     }
-    80% {
-      transform: translateY(0);
-      animation-timing-function: ease-out;
-    }
-    
-    /* Ninth bounce - smallest */
-    85% {
-      transform: translateY(-8px);
-      animation-timing-function: ease-in;
-    }
-    90% {
+    84% {
       transform: translateY(0);
     }
     
