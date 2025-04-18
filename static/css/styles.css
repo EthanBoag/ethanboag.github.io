@@ -556,8 +556,8 @@
     }
   }
   
-  /* ====== Services Section ====== */
-  .services {
+/* ====== Services Section ====== */
+.services {
     padding: 6rem 2rem;
     background-color: var(--white);
     text-align: center;
@@ -565,9 +565,41 @@
   
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+  }
+  
+  /* Add this media query to handle the 3-item specific case */
+  @media (max-width: 992px) and (min-width: 769px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* For the specific case of exactly 3 items, when they would break to 2+1 layout */
+  @media (min-width: 769px) and (max-width: 1200px) {
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .service-card {
+      flex: 0 0 calc(50% - 2rem);
+      max-width: calc(50% - 2rem);
+    }
+    
+    .service-card:last-child {
+      flex: 0 0 calc(50% - 2rem);
+      margin-top: 2rem;
+    }
   }
   
   .service-card {
@@ -860,8 +892,8 @@
     font-size: 1.1rem;
   }
   
-  /* ====== Contact Section ====== */
-  .contact {
+/* ====== Contact Section ====== */
+.contact {
     padding: 6rem 2rem;
     background-color: var(--light-gray);
     text-align: center;
@@ -931,12 +963,6 @@
     min-width: 300px;
   }
   
-  .contact-message h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    text-align: left;
-  }
-  
   .contact-form {
     display: flex;
     flex-wrap: wrap;
@@ -946,6 +972,13 @@
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     text-align: left;
+  }
+  
+  .form-title {
+    width: 100%;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
   }
   
   .contact-form input,
@@ -958,6 +991,9 @@
   .contact-form .submit-btn {
     background-color: var(--primary);
     color: var(--white);
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: 0.5rem;
   }
   
   .contact-form .submit-btn:hover {
