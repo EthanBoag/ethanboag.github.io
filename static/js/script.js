@@ -212,3 +212,49 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }, 2000); // Wait 2 seconds after page load
   });
+
+// EmailJS Integration - Add this to your script.js file
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EmailJS with your public key
+    emailjs.init("QjRc5AMeMvazQQTQ1");
+    
+    // Get the contact form element
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show sending state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        formStatus.textContent = '';
+        formStatus.classList.remove('success', 'error');
+        
+        // Send the email using EmailJS
+        emailjs.sendForm('service_mqr9b6a', 'template_zzt591o', this)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            formStatus.textContent = 'Message sent successfully!';
+            formStatus.classList.add('success');
+            contactForm.reset();
+            
+            // Reset button after 2 seconds
+            setTimeout(() => {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Message';
+            }, 2000);
+          }, function(error) {
+            console.log('FAILED...', error);
+            formStatus.textContent = 'Failed to send message. Please try again.';
+            formStatus.classList.add('error');
+            
+            // Reset button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+          });
+      });
+    }
+  });
