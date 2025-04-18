@@ -274,34 +274,36 @@
   
   /* ====== Hero Section ====== */
   .hero {
-    min-height: 100vh;
-    padding: 100px 0 40px;
+    min-height: auto;
+    padding: 120px 0 60px;
     display: grid;
-    grid-template-columns: 45% 55%; /* Adjust column proportions to give more space to image */
+    grid-template-columns: minmax(500px, 45%) 1fr; /* Adjusted column sizing */
     align-items: center;
-    background: linear-gradient(to right, var(--white) 50%, rgba(243, 111, 33, 0.05) 50%);
+    background: linear-gradient(to right, var(--white) 60%, rgba(243, 111, 33, 0.05) 60%);
     overflow: hidden;
     position: relative;
+    max-width: 1400px; /* Added max-width to contain very large screens */
+    margin: 0 auto;
   }
   
   .hero-content {
-    padding: 0 5% 0 10%;
+    padding: 0 0 0 10%; /* Removed right padding */
     max-width: 650px;
     z-index: 2;
   }
   
   .hero h1 {
-    font-size: 4rem;
+    font-size: clamp(3rem, 4vw, 4rem); /* Responsive font size */
     margin-bottom: 1.5rem;
     line-height: 1.1;
     color: var(--dark-gray);
   }
   
   .hero p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem); /* Responsive font size */
     color: var(--medium-gray);
     margin-bottom: 2.5rem;
-    max-width: 540px;
+    max-width: 100%; /* Allow text to fill available space */
   }
   
   .cta-button {
@@ -331,12 +333,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 5%; /* Reduced padding to allow more space */
+    padding-right: 10%;
+    padding-left: 2%; /* Added left padding */
   }
   
   .hero-image img {
-    width: 95%; /* Increased from 90% */
-    max-width: 750px; /* Increased from 650px */
+    width: 90%;
+    max-width: 650px;
     border-radius: 20px;
     object-fit: cover;
     position: relative;
@@ -348,10 +351,10 @@
   .hero-accent {
     position: absolute;
     top: 50%;
-    right: 1%; /* Moved closer to edge */
+    right: 5%;
     transform: translateY(-50%);
-    width: 70%; /* Slightly larger background */
-    height: 80%; /* Slightly larger background */
+    width: 65%;
+    height: 75%;
     background-color: var(--primary);
     border-radius: 20px;
     z-index: 1;
@@ -1171,13 +1174,19 @@
   }
   
   /* ====== Media Queries ====== */
+  @media (max-width: 1200px) {
+    .hero {
+      grid-template-columns: 1fr 1fr; /* Equal columns on medium-large screens */
+    }
+  }
+
   @media (max-width: 992px) {
     .hero {
         grid-template-columns: 1fr;
         background: linear-gradient(to bottom, var(--white) 60%, rgba(243, 111, 33, 0.05) 60%);
         padding: 120px 20px 60px;
         text-align: center;
-      }    
+      }
       
       .hero-content {
         padding: 0 20px;
@@ -1196,8 +1205,8 @@
       .hero-image {
         padding: 0;
         margin: 0 auto;
-        max-width: 700px; /* Increased from 600px */
-        width: 100%;
+        max-width: 600px;
+        width: 90%;
       }
 
       .hero-image img {
@@ -1209,8 +1218,7 @@
         right: auto;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 90%;
-        height: 75%;
+        width: 80%;
       }
     
     .sphere-card {
@@ -1446,5 +1454,158 @@
     100% {
       transform: scale(0.7, 0.1);
       opacity: 0.1;
+    }
+  }
+
+/* ====== Upcoming Camps Section ====== */
+.upcoming-camps {
+    padding: 4rem 2rem;
+    background-color: var(--light-gray);
+    position: relative;
+  }
+  
+  .camp-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-large);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto;
+    border-top: 5px solid var(--primary);
+  }
+  
+  .camp-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transform: translateY(-0%) translateX(0%);
+    border-radius: 0 0 0 var(--border-radius);
+    box-shadow: -2px 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .camp-title {
+    font-size: 1.8rem;
+    color: var(--dark-gray);
+    margin-bottom: 1.5rem;
+    padding-right: 120px; /* Make room for the badge */
+  }
+  
+  .camp-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .camp-detail {
+    flex: 1 1 300px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--medium-gray);
+  }
+  
+  .camp-detail i {
+    color: var(--primary);
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+  }
+  
+  .camp-detail.highlight {
+    font-weight: 600;
+    color: var(--primary-dark);
+  }
+  
+  .camp-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .camp-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+  }
+  
+  .camp-btn:not(.primary) {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+  }
+  
+  .camp-btn:not(.primary):hover {
+    background-color: var(--medium-gray);
+    color: var(--white);
+    transform: translateY(-3px);
+  }
+  
+  .camp-btn.primary {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+  
+  .camp-btn.primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-large);
+  }
+  
+  .camp-spots {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light-gray);
+  }
+  
+  .spots-bar {
+    height: 12px;
+    background-color: var(--light-gray);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+  
+  .spots-filled {
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 6px;
+  }
+  
+  .camp-spots p {
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .camp-title {
+      font-size: 1.5rem;
+      padding-right: 0;
+      padding-top: 25px; /* Make room for repositioned badge */
+    }
+    
+    .camp-badge {
+      right: auto;
+      left: 0;
+      border-radius: 0 0 var(--border-radius) 0;
+    }
+    
+    .camp-detail {
+      flex: 1 1 100%;
     }
   }
