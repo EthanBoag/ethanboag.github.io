@@ -197,3 +197,18 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 2000);
     }
   });
+
+// Basketball animation - add this at the END of your script.js file
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      // Find the basketball emoji
+      const basketballEmoji = document.querySelector('.basketball-emoji');
+      if (basketballEmoji) {
+        // Remove the inline style that's preventing animation
+        basketballEmoji.removeAttribute('style');
+        // Add the animation class
+        basketballEmoji.classList.add('animate');
+        console.log('Basketball animation triggered'); // Debug message
+      }
+    }, 2000); // Wait 2 seconds after page load
+  });

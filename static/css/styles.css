@@ -1281,3 +1281,158 @@
       justify-content: center;
     }
   }
+
+/* Bouncing Basketball Animation - with progressively lower bounces */
+.basketball-emoji {
+    position: fixed;
+    font-size: 38px;
+    z-index: 100;
+    bottom: 5%;
+    left: -5%;
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
+    animation: none;
+  }
+  
+  /* For the shadow effect */
+  .basketball-emoji::after {
+    content: "🏀";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(2px);
+    transform: translateY(5px) scale(1, 0.3);
+    animation: ball-shadow 0.6s infinite alternate;
+  }
+  
+  /* Animation class - uses two separate animations */
+  .basketball-emoji.animate {
+    animation: 
+      horizontal-move 8s linear forwards,
+      vertical-bounce 8s ease-in-out forwards;
+  }
+  
+  /* Horizontal movement speed varies by screen size */
+  @media (min-width: 992px) {
+    .basketball-emoji.animate {
+      animation-duration: 10s, 10s; /* Slower horizontal on desktop */
+    }
+  }
+  
+  @keyframes horizontal-move {
+    0% { left: -5%; }
+    100% { left: 110%; }
+  }
+  
+  /* Multiple bounces with progressively lower heights */
+  @keyframes vertical-bounce {
+    /* First bounce - highest */
+    0% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    5% {
+      transform: translateY(-120px);
+      animation-timing-function: ease-in;
+    }
+    10% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    
+    /* Second bounce - slightly lower */
+    15% {
+      transform: translateY(-100px);
+      animation-timing-function: ease-in;
+    }
+    20% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    
+    /* Third bounce */
+    25% {
+      transform: translateY(-80px);
+      animation-timing-function: ease-in;
+    }
+    30% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    
+    /* Fourth bounce */
+    35% {
+      transform: translateY(-65px);
+      animation-timing-function: ease-in;
+    }
+    40% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    
+    /* Fifth bounce */
+    45% {
+      transform: translateY(-50px);
+      animation-timing-function: ease-in;
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    
+    /* Sixth bounce */
+    55% {
+      transform: translateY(-35px);
+      animation-timing-function: ease-in;
+    }
+    60% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    
+    /* Seventh bounce */
+    65% {
+      transform: translateY(-25px);
+      animation-timing-function: ease-in;
+    }
+    70% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    
+    /* Eighth bounce */
+    75% {
+      transform: translateY(-15px);
+      animation-timing-function: ease-in;
+    }
+    80% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    
+    /* Ninth bounce - smallest */
+    85% {
+      transform: translateY(-8px);
+      animation-timing-function: ease-in;
+    }
+    90% {
+      transform: translateY(0);
+    }
+    
+    /* Stay on ground */
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes ball-shadow {
+    0% {
+      transform: scale(1, 0.3);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(0.7, 0.1);
+      opacity: 0.1;
+    }
+  }
