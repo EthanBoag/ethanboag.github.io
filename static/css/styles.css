@@ -656,6 +656,41 @@
     background-color: var(--light-gray);
     text-align: center;
   }
+
+  .testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    flex-shrink: 0;
+  }
+  
+  /* Different background colors for different avatars */
+  .testimonial-avatar.avatar-1 {
+    background-color: #4285F4; /* Google Blue */
+  }
+  
+  .testimonial-avatar.avatar-2 {
+    background-color: #EA4335; /* Google Red */
+  }
+  
+  .testimonial-avatar.avatar-3 {
+    background-color: #FBBC05; /* Google Yellow */
+  }
+  
+  .testimonial-avatar.avatar-4 {
+    background-color: #34A853; /* Google Green */
+  }
+  
+  .testimonial-avatar.avatar-5 {
+    background-color: #8c44a2; /* Purple */
+  }
   
   .testimonial-slider {
     max-width: 800px;
