@@ -839,13 +839,14 @@
     transform: scale(1.1);
   }
   
-  /* ====== Register Section ====== */
-  .register {
+/* ====== Register Section ====== */
+.register {
     padding: 6rem 2rem;
     background: linear-gradient(135deg, rgba(243,111,33,0.9) 0%, rgba(211,93,21,0.9) 100%), 
                 url('https://images.unsplash.com/photo-1546519638-68e109acd27d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8YmFza2V0YmFsbHx8fHx8fDE2MTY1MjQwMzQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600') center/cover no-repeat;
     color: var(--white);
     text-align: center;
+    position: relative;
   }
   
   .register-content {
@@ -858,6 +859,72 @@
     color: var(--white);
   }
   
+  /* New class for alternative highlight color against orange background */
+  .highlight-alt {
+    color: white;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Add underline effect with white color */
+  .highlight-alt::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 1.5px;
+  }
+  
+  /* Google Form Container */
+  .google-form-container {
+    max-width: 800px;
+    margin: 2.5rem auto 0;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-large);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .google-form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 1.25rem;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .form-header i {
+    font-size: 1.5rem;
+    color: var(--primary);
+  }
+  
+  .form-header h3 {
+    margin: 0;
+    color: var(--dark-gray);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .google-form-container iframe {
+    border: none;
+    display: block;
+    width: 100%;
+    height: 1000px;
+    background-color: white;
+  }
+  
+  /* Keep existing form styles for other forms */
   .register-form {
     display: flex;
     flex-wrap: wrap;
@@ -928,6 +995,31 @@
   .contact-alt {
     margin-top: 2rem;
     font-size: 1.1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .google-form-container {
+      margin: 1.5rem auto 0;
+    }
+    
+    .form-header {
+      padding: 1rem;
+    }
+    
+    .google-form-container iframe {
+      height: 700px; /* Slightly shorter on mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .google-form-container iframe {
+      height: 600px; /* Even shorter on very small screens */
+    }
+    
+    .form-header h3 {
+      font-size: 1.1rem;
+    }
   }
   
 /* ====== Contact Section ====== */
@@ -1042,15 +1134,6 @@
   .contact-form .submit-btn:hover {
     background-color: var(--primary-dark);
   }
-
-  .form-status {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    border-radius: 4px;
-    font-weight: 600;
-    text-align: center;
-    display: none;
-  }
   
   .form-status {
     margin-top: 1rem;
@@ -1081,7 +1164,7 @@
     color: #ffc107;
     border: 1px solid rgba(255, 193, 7, 0.2);
   }
-  
+
   /* Style for disabled button state */
   .submit-btn:disabled {
     opacity: 0.7;
