@@ -103,31 +103,57 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     
+    // Testimonial slider functionality
+    let testimonialTimer; // Variable to hold the timer
+
+    function updateSlider() {
+    testimonialTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+    
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlide);
+    });
+    
+    // Reset the auto-advance timer
+    clearInterval(testimonialTimer);
+    startAutoAdvance();
+    }
+
+    // Function to start auto-advance
+    function startAutoAdvance() {
+    testimonialTimer = setInterval(() => {
+        currentSlide = (currentSlide + 1) % testimonialSlides.length;
+        testimonialTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlide);
+        });
+    }, 10000); // Change slide every 10 seconds
+    }
+
     // Next slide button
     nextBtn.addEventListener('click', function() {
-      currentSlide = (currentSlide + 1) % testimonialSlides.length;
-      updateSlider();
+    currentSlide = (currentSlide + 1) % testimonialSlides.length;
+    updateSlider();
     });
-    
+
     // Previous slide button
     prevBtn.addEventListener('click', function() {
-      currentSlide = (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
-      updateSlider();
+    currentSlide = (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
+    updateSlider();
     });
-    
+
     // Indicator buttons
     indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', function() {
+    indicator.addEventListener('click', function() {
         currentSlide = index;
         updateSlider();
-      });
     });
-    
-    // Auto-advance testimonials
-    setInterval(() => {
-      currentSlide = (currentSlide + 1) % testimonialSlides.length;
-      updateSlider();
-    }, 6000);
+    });
+
+    // Start the auto-advance when the page loads
+    startAutoAdvance();
     
     // Reveal animations on scroll
     function revealOnScroll() {
