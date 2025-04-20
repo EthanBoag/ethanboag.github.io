@@ -1,4 +1,4 @@
-// Wait for DOM to load
+// Wait for DOM to load - MAIN LISTENER
 document.addEventListener('DOMContentLoaded', function() {
     // Variables
     const preloader = document.querySelector('.preloader');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     const indicators = document.querySelectorAll('.indicator');
-    const forms = document.querySelectorAll('form');
+    const forms = document.querySelectorAll('form:not(#contact-form)'); // Exclude contact form
     
     let currentSlide = 0;
     const slideWidth = 100; // percentage
@@ -94,62 +94,52 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Testimonial slider functionality
+    let testimonialTimer; // Variable to hold the timer
+
     function updateSlider() {
       testimonialTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
       
       // Update indicators
       indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentSlide);
+          indicator.classList.toggle('active', index === currentSlide);
       });
-    }
-    
-    // Testimonial slider functionality
-    let testimonialTimer; // Variable to hold the timer
-
-    function updateSlider() {
-    testimonialTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
-    
-    // Update indicators
-    indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentSlide);
-    });
-    
-    // Reset the auto-advance timer
-    clearInterval(testimonialTimer);
-    startAutoAdvance();
+      
+      // Reset the auto-advance timer
+      clearInterval(testimonialTimer);
+      startAutoAdvance();
     }
 
     // Function to start auto-advance
     function startAutoAdvance() {
-    testimonialTimer = setInterval(() => {
-        currentSlide = (currentSlide + 1) % testimonialSlides.length;
-        testimonialTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
-        
-        // Update indicators
-        indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentSlide);
-        });
-    }, 10000); // Change slide every 10 seconds
+      testimonialTimer = setInterval(() => {
+          currentSlide = (currentSlide + 1) % testimonialSlides.length;
+          testimonialTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+          
+          // Update indicators
+          indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+          });
+      }, 10000); // Change slide every 10 seconds
     }
 
     // Next slide button
     nextBtn.addEventListener('click', function() {
-    currentSlide = (currentSlide + 1) % testimonialSlides.length;
-    updateSlider();
+      currentSlide = (currentSlide + 1) % testimonialSlides.length;
+      updateSlider();
     });
 
     // Previous slide button
     prevBtn.addEventListener('click', function() {
-    currentSlide = (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
-    updateSlider();
+      currentSlide = (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
+      updateSlider();
     });
 
     // Indicator buttons
     indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', function() {
-        currentSlide = index;
-        updateSlider();
-    });
+      indicator.addEventListener('click', function() {
+          currentSlide = index;
+          updateSlider();
+      });
     });
 
     // Start the auto-advance when the page loads
@@ -194,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     
-    // Form submission (prevent default and show alert for demo)
+    // Form submission for non-contact forms (registration form)
     forms.forEach(form => {
       form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -203,12 +193,18 @@ document.addEventListener('DOMContentLoaded', function() {
         let message = '';
         
         if (formType === 'register') {
-          message = 'Registration submitted successfully! We\'ll contact you shortly.';
-        } else if (formType === 'contact') {
-          message = 'Message sent successfully! We\'ll respond as soon as possible.';
+          // Replace alert with inline feedback for registration form
+          const statusDiv = document.createElement('div');
+          statusDiv.className = 'form-status success';
+          statusDiv.textContent = 'Registration submitted successfully! We\'ll contact you shortly.';
+          form.appendChild(statusDiv);
+          
+          // Remove status message after 5 seconds
+          setTimeout(() => {
+            statusDiv.remove();
+          }, 5000);
         }
         
-        alert(message);
         form.reset();
       });
     });
@@ -222,65 +218,85 @@ document.addEventListener('DOMContentLoaded', function() {
         basketball.querySelector('.lines').style.transform = `rotate(${randomRotation}deg)`;
       }, 2000);
     }
-  });
-
-// Basketball animation - add this at the END of your script.js file
-document.addEventListener('DOMContentLoaded', function() {
+    
+    // Find the basketball emoji and trigger animation
     setTimeout(function() {
-      // Find the basketball emoji
       const basketballEmoji = document.querySelector('.basketball-emoji');
       if (basketballEmoji) {
-        // Remove the inline style that's preventing animation
         basketballEmoji.removeAttribute('style');
-        // Add the animation class
         basketballEmoji.classList.add('animate');
-        console.log('Basketball animation triggered'); // Debug message
+        console.log('Basketball animation triggered');
       }
-    }, 2000); // Wait 2 seconds after page load
-  });
-
-// EmailJS Integration - Add this to your script.js file
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize EmailJS with your public key
-    emailjs.init("QjRc5AMeMvazQQTQ1");
+    }, 2000);
     
-    // Get the contact form element
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
-    const submitBtn = document.getElementById('submit-btn');
-    
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Show sending state
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        formStatus.textContent = '';
-        formStatus.classList.remove('success', 'error');
-        
-        // Send the email using EmailJS
-        emailjs.sendForm('service_mqr9b6a', 'template_zzt591o', this)
-          .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            formStatus.textContent = 'Message sent successfully!';
-            formStatus.classList.add('success');
-            contactForm.reset();
-            
-            // Reset button after 2 seconds
-            setTimeout(() => {
-              submitBtn.disabled = false;
-              submitBtn.textContent = 'Send Message';
-            }, 2000);
-          }, function(error) {
-            console.log('FAILED...', error);
-            formStatus.textContent = 'Failed to send message. Please try again.';
-            formStatus.classList.add('error');
-            
-            // Reset button
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
-          });
-      });
+    // EmailJS Integration - INSIDE THE MAIN LISTENER
+    // Initialize EmailJS
+    if (typeof(emailjs) !== 'undefined') {
+      emailjs.init("QjRc5AMeMvazQQTQ1");
+      
+      const contactForm = document.getElementById('contact-form');
+      const statusDiv = document.getElementById('form-status');
+      const submitButton = document.getElementById('submit-btn');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          // Get values directly when the form is submitted
+          const nameValue = document.getElementById('contact-name').value.trim();
+          const emailValue = document.getElementById('contact-email').value.trim();
+          const subjectValue = document.getElementById('contact-subject').value.trim();
+          const messageValue = document.getElementById('contact-message').value.trim();
+          
+          // Check if values are empty - use inline validation
+          if (!nameValue || !emailValue || !subjectValue || !messageValue) {
+            statusDiv.textContent = 'Please fill in all fields.';
+            statusDiv.className = 'form-status error';
+            return;
+          }
+          
+          // Update UI
+          submitButton.disabled = true;
+          submitButton.textContent = 'Sending...';
+          statusDiv.textContent = 'Sending your message...';
+          statusDiv.className = 'form-status sending';
+          
+          // Prepare template parameters with all possible variations
+          const templateParams = {
+            from_name: nameValue,
+            from_email: emailValue,
+            subject: subjectValue,
+            message: messageValue,
+            name: nameValue,
+            email: emailValue,
+            title: subjectValue,
+            content: messageValue
+          };
+          
+          // Send the email
+          emailjs.send('service_mqr9b6a', 'template_zzt591o', templateParams)
+            .then(function(response) {
+              console.log('SUCCESS!', response.status, response.text);
+              
+              statusDiv.textContent = 'Message sent successfully!';
+              statusDiv.className = 'form-status success';
+              contactForm.reset();
+              
+              setTimeout(function() {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+              }, 2000);
+            })
+            .catch(function(error) {
+              console.log('FAILED...', error);
+              
+              statusDiv.textContent = 'Failed to send message. Please try again.';
+              statusDiv.className = 'form-status error';
+              
+              submitButton.disabled = false;
+              submitButton.textContent = 'Send Message';
+            });
+        });
+      }
     }
-  });
+});
