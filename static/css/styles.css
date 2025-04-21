@@ -859,11 +859,27 @@ header.scrolled {
     transform: scale(1.1);
 }
 
-/* ====== Upcoming Camps Section ====== */
+/* Updated Upcoming Camps Section */
 .upcoming-camps {
     padding: 4rem 2rem;
     background-color: var(--light-gray);
     position: relative;
+    text-align: center; /* Center the title */
+}
+
+/* Add section title styling */
+.upcoming-camps .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Container for multiple camp cards */
+.camps-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
 .camp-card {
@@ -873,9 +889,11 @@ header.scrolled {
     padding: 2.5rem;
     position: relative;
     overflow: hidden;
-    max-width: 900px;
-    margin: 0 auto;
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
     border-top: 5px solid var(--primary);
+    text-align: left; /* Left-align content within cards */
 }
 
 .camp-badge {
@@ -884,7 +902,7 @@ header.scrolled {
     right: 0;
     background-color: var(--primary);
     color: var(--white);
-    padding: 0.5rem 1.5rem;
+    padding: 0.2rem 1.5rem;
     font-weight: 700;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -894,10 +912,11 @@ header.scrolled {
 }
 
 .camp-title {
-    font-size: 1.8rem;
-    color: var(--dark-gray);
-    margin-bottom: 1.5rem;
-    padding-right: 120px; /* Make room for the badge */
+    font-size: 1.6rem; /* Reduce from 1.8rem to 1.6rem */
+    padding-right: 150px; /* Increase padding to make room for the badge */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow */
+
 }
 
 .camp-details {
@@ -910,7 +929,7 @@ header.scrolled {
 .camp-detail {
     flex: 1 1 300px;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align to top for multi-line content */
     gap: 0.5rem;
     font-size: 1rem;
     color: var(--medium-gray);
@@ -921,6 +940,7 @@ header.scrolled {
     font-size: 1.2rem;
     width: 24px;
     text-align: center;
+    margin-top: 0.2rem; /* Slightly adjust icon position */
 }
 
 .camp-detail.highlight {
@@ -992,6 +1012,70 @@ header.scrolled {
     font-size: 0.9rem;
     color: var(--medium-gray);
     margin-bottom: 0;
+}
+
+/* New styling for the bonus offer */
+.camp-bonus {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: #fff8f3;
+    border: 1px dashed var(--primary);
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+.bonus-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary);
+    color: white;
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 50px;
+}
+
+.camp-bonus p {
+    margin: 0;
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+.camps-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--medium-gray);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .camp-title {
+        font-size: 1.5rem;
+        padding-right: 0;
+        padding-top: 25px; /* Make room for repositioned badge */
+    }
+    
+    .camp-badge {
+        right: auto;
+        left: 0;
+        border-radius: 0 0 var(--border-radius) 0;
+    }
+    
+    .camp-detail {
+        flex: 1 1 100%;
+    }
+    
+    .camp-actions {
+        flex-direction: column;
+    }
+    
+    .camp-bonus {
+        padding: 1.5rem 1rem 1rem;
+    }
 }
 
 /* ====== Register Section ====== */
