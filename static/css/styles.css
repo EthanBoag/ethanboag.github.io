@@ -578,17 +578,51 @@ header.scrolled {
 }
 
 /* ====== Services Section ====== */
+/* Services Section - Comprehensive fix for all resolutions */
 .services {
     padding: 6rem 2rem;
     background-color: var(--white);
     text-align: center;
 }
 
+/* Replace the entire grid setup with this flexible approach */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     margin-top: 3rem;
+}
+
+/* Desktop - three cards in a row */
+@media (min-width: 1201px) {
+    .service-card {
+        flex: 1 1 calc(33.333% - 2rem);
+        max-width: calc(33.333% - 2rem);
+    }
+}
+
+/* Tablet landscape and smaller desktops - two cards per row */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .service-card {
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+    
+    /* For exactly 3 cards, ensure the 3rd one is centered */
+    .service-card:last-child:nth-child(3) {
+        flex: 0 0 calc(50% - 1rem);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Mobile - one card per row */
+@media (max-width: 768px) {
+    .service-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
 .service-card {
