@@ -877,8 +877,8 @@ header.scrolled {
 .camps-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 3rem;
     justify-content: center;
+    gap: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -889,11 +889,46 @@ header.scrolled {
     padding: 2.5rem;
     position: relative;
     overflow: hidden;
-    flex: 1;
+    flex: 0 0 calc(50% - 1.5rem); /* Set fixed width to create a 2-column layout */
     min-width: 300px;
-    max-width: 600px;
+    max-width: 550px;
     border-top: 5px solid var(--primary);
-    text-align: left; /* Left-align content within cards */
+}
+
+/* Special styling for third card */
+.camp-card.third-card {
+    flex: 0 0 calc(50% - 1.5rem); /* Keep same width as others */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* New styling for the special note */
+.camp-note {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: rgba(58, 134, 255, 0.1); /* Light blue background */
+    border: 1px dashed var(--accent);
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+.note-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--accent); /* Use accent color for this badge */
+    color: white;
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 50px;
+}
+
+.camp-note p {
+    margin: 0;
+    text-align: center;
+    color: var(--dark-gray);
 }
 
 .camp-badge {
@@ -912,11 +947,12 @@ header.scrolled {
 }
 
 .camp-title {
-    font-size: 1.6rem; /* Reduce from 1.8rem to 1.6rem */
-    padding-right: 150px; /* Increase padding to make room for the badge */
-    white-space: nowrap; /* Prevent wrapping */
-    overflow: hidden; /* Hide overflow */
-
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    padding-right: 50px; /* Space for badge */
+    line-height: 1.2;
+    white-space: normal; /* Allow wrapping by default */
+    overflow: visible;
 }
 
 .camp-details {
@@ -1857,5 +1893,37 @@ footer {
     
     .form-header h3 {
         font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .camp-title {
+        font-size: 1.3rem; /* Smaller font size for small phones */
+        padding-right: 0; /* Remove padding when badge repositions */
+        padding-top: 30px; /* Add space for the repositioned badge */
+        white-space: normal; /* Allow wrapping on very small screens */
+        overflow: visible; /* Show all content */
+        text-overflow: clip; /* Remove ellipsis */
+    }
+    
+    .camp-badge {
+        right: auto;
+        left: 0;
+        top: 0;
+        font-size: 0.8rem; /* Slightly smaller badge text */
+        padding: 0.2rem 1rem; /* Smaller padding */
+        border-radius: 0 0 var(--border-radius) 0; /* Change border radius for left position */
+    }
+}
+
+/* Extra small screens / iPhone SE size */
+@media (max-width: 375px) {
+    .camp-title {
+        font-size: 1.1rem; /* Even smaller font for very small screens */
+    }
+    
+    .camp-badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.8rem;
     }
 }
