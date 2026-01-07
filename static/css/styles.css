@@ -1087,6 +1087,53 @@ header.scrolled {
     margin: 0 auto;
 }
 
+/* Past Camps Heading */
+.past-camps-heading {
+    flex-basis: 100%;
+    width: 100%;
+    text-align: center;
+    color: var(--medium-gray);
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd;
+}
+
+/* Past/Completed Camp Styles */
+.camp-card.camp-past {
+    opacity: 0.55 !important;
+    filter: grayscale(50%);
+    background-color: #e8e8e8 !important;
+}
+
+.camp-card.camp-past .camp-badge {
+    background-color: #999 !important;
+}
+
+.camp-card.camp-past .camp-title {
+    color: #777;
+}
+
+.camp-card.camp-past .camp-detail {
+    color: #888;
+}
+
+.camp-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.camp-btn.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.camp-card.camp-past .camp-btn.primary.disabled {
+    background-color: #999 !important;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .camp-title {
